@@ -15,22 +15,29 @@ muladd destination, operand1, operand2, operand3
 destination = (operand1 * operand2) + operand3;
 
 
-⚙️ How to Build
-1.Generate the parser and lexer:
-
+⚙️ How to Build␣␣
+1.Generate the parser and lexer:␣␣
 ---
+```
 bison -d parser.y
-flex lexer.l
-gcc parser.tab.c lex.yy.c -o custom_compiler
----
-2.Run the compiler on test input:
-echo "z = a * b + c;" | ./custom_compiler
-3.Output
-Custom instruction: muladd z, a, b, c
 
+flex lexer.l
+
+gcc parser.tab.c lex.yy.c -o custom_compiler
+```
+2.Run the compiler on test input:
+---
+```
+echo "z = a * b + c;" | ./custom_compiler
+```
+3.Output
+---
+```
+Custom instruction: muladd z, a, b, c
+```
 ****Features
 Detects and processes the exact expression z = a * b + c;
-
+---
 Emits a custom instruction instead of standard IR or assembly
 
 Easily extensible to support more patterns or instructions
